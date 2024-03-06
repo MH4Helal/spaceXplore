@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { fetchRockets } from './services/spaceXService';
+import RocketWidget from './components/RocketWidget';
 
-function App() {
+const App: React.FC = () => {
+  const [rockets, setRockets] = useState<any[]>([]);
+
+  useEffect(() => {
+    const getRockets = async () => {
+      const data = await fetchRockets();
+      setRockets(data);
+    };
+
+    getRockets();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>SpaceX Rockets</h1>
+      <div className="rocket-list">
+        {rockets.map((rocket) => (
+          <RocketWidget key={rocket.rocket_id} rocket={rocket} />
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
