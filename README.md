@@ -1,6 +1,10 @@
+## Installing the App
 
+In the project directory, run:
 
-## Available Scripts
+### `npm install`
+
+## Running the App
 
 In the project directory, you can run:
 
