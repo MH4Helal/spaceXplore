@@ -16,12 +16,16 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="app">
-      <h1>SpaceX Rockets</h1>
-      <div className="rocket-list">
+    <div className="App w-full flex flex-col justify-center items-center bg-neutral-200">
+      <header className="w-full bg-stone-950 flex justify-center items-center shadow-md">
+        <h1 className='text-3xl font-bold py-3 text-white'>SpaceXplore</h1>
+      </header>
+      <div className='p-10'>
+      <div className="rocket-list flex flex-col gap-10">
         {rockets.map((rocket) => (
-          <RocketWidget key={rocket.rocket_id} rocket={rocket} />
+          <RocketWidget key={rocket.id} rocket={rocket} />
         ))}
+      </div>
       </div>
     </div>
   );
