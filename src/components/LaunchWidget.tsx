@@ -51,7 +51,12 @@ const LaunchWidget: React.FC<LaunchWidgetProps> = ({ launch }) => {
                         <span className='text-lg font-bold text-red-700'>Launch Failed</span>
                     )}
                 </p>
-                <p className={`description ${descriptionClass}`} >{launch.details}</p>
+                <p className={`description ${descriptionClass}`} >  {launch.details ? (
+                        launch.details
+                    ) : (
+                        'No launch details found (Blame Elon)'
+                    )}
+                </p>
                 <button className="text-blue-500" onClick={toggleDescription}>{readMoreText}</button>
             </div>
         </div>
